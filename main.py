@@ -2,15 +2,10 @@ from flask import Flask, render_template, request # type: ignore
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-import os
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import PIL
 import numpy as np	
 
-print(PIL.__version__)
-# Paksa penggunaan CPU saja
-tf.config.set_visible_devices([], 'GPU')
+
 app = Flask(__name__)
 
 dic = {0 : 'Sampah Anorganik',  
@@ -50,4 +45,4 @@ def get_output():
 
 if __name__ =='__main__':
 	#app.debug = True
-	app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+	app.run(host='0.0.0.0', port=5000)
